@@ -1,5 +1,4 @@
 'use strict'
-
 var leftIndex = 0;
 var centerIndex = 0;
 var rightIndex = 0;
@@ -8,17 +7,17 @@ var veiwNum = 0;
 var totalVotes = 25;
 var votesChart = [];
 var viewsChart = [];
-var  lastShown = [];
+var lastShown = [];
 
-const images = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb',
+let images = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb',
   'water-can',
   'wine-glass',
 ];
 
-const imageSection = document.getElementById('imageSection');
-const leftImage = document.getElementById('leftImage');
-const centerImage = document.getElementById('centerImage');
-const rightImage = document.getElementById('rightImage');
+let imageSection = document.getElementById('imageSection');
+let leftImage = document.getElementById('leftImage');
+let centerImage = document.getElementById('centerImage');
+let rightImage = document.getElementById('rightImage');
 
 function product(name) {
   this.name = name;
@@ -43,7 +42,7 @@ function displayData() {
   let storedData = JSON.parse(mallData);
   if (storedData !==null) {
     product.all = storedData;
-    //console.log('Loaded from Local Storage');
+    console.log('Loaded from Local Storage');
     return;
   }
 
@@ -141,18 +140,18 @@ function voteClick(event) {
 
 // render();
 
-var result = document.getElementById('result');
-var productItem = document.getElementById('productItem');
-result.addEventListener('click', displayProductItem);
-function displayProductItem(event) {
+const result = document.getElementById('result');
+const productList = document.getElementById('productList');
+result.addEventListener('click', displayProductList);
+function displayProductList(event) {
 
   addLocal();
-  var h3El = document.createElement('h3');
+  const h3El = document.createElement('h3');
   productList.appendChild(h3El);
-  h3El.textContent = 'ProductItem';
+  h3El.textContent = 'Product List';
 
   const ulEl = document.createElement('ul');
-  productItem.appendChild(ulEl);
+  productList.appendChild(ulEl);
 
   for (let i = 0; i < images.length; i++) {
     const liEl = document.createElement('li');
@@ -166,7 +165,7 @@ function displayProductItem(event) {
   
   
   chartRender();
-  result.removeEventListener('click', displayProducItem);
+  result.removeEventListener('click', displayProductList);
 }
 
 render();
